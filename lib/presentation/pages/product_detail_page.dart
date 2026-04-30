@@ -95,18 +95,22 @@ class _ImageGallery extends StatelessWidget {
             itemCount: images.length,
             onPageChanged: onPageChanged,
             itemBuilder: (context, index) {
-              return CachedNetworkImage(
-                imageUrl: images[index],
-                fit: BoxFit.cover,
-                width: double.infinity,
-                placeholder: (_, __) => Container(
-                  color: Colors.grey.shade200,
-                  child: const Center(child: CircularProgressIndicator()),
-                ),
-                errorWidget: (_, __, ___) => Container(
-                  color: Colors.grey.shade300,
-                  child: const Center(
-                    child: Icon(Icons.broken_image, size: 48),
+              return Container(
+                color: Colors.grey.shade100,
+                child: CachedNetworkImage(
+                  imageUrl: images[index],
+                  fit: BoxFit.contain,
+                  width: double.infinity,
+                  height: double.infinity,
+                  placeholder: (_, __) => Container(
+                    color: Colors.grey.shade200,
+                    child: const Center(child: CircularProgressIndicator()),
+                  ),
+                  errorWidget: (_, __, ___) => Container(
+                    color: Colors.grey.shade300,
+                    child: const Center(
+                      child: Icon(Icons.broken_image, size: 48),
+                    ),
                   ),
                 ),
               );
